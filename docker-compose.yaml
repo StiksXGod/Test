@@ -10,3 +10,8 @@ services:
       - .:/app
     environment:
       - PYTHONUNBUFFERED=1
+    networks:
+      - monitoring
+networks:
+  monitoring:
+    external: true
