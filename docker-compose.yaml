@@ -6,9 +6,9 @@ networks:
 
 services:
   fastapi_app:
-    build: .               # или image: your/imagename:tag
+    build: .
     container_name: fastapi_app
-    ports: ["80:80"]       # наружу, если нужно
+    ports: ["80:80"]
     environment:
       - PYTHONUNBUFFERED=1
     restart: unless-stopped
