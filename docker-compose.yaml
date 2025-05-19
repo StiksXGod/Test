@@ -1,17 +1,15 @@
-version: '3.3'
-services:
-  web:
-    build: .
-    container_name: fastapi_app
-    ports:
-      - "80:80"
-    restart: always
-    volumes:
-      - .:/app
-    environment:
-      - PYTHONUNBUFFERED=1
-    networks:
-      - monitoring
+version: "3.8"
+
 networks:
   monitoring:
     external: true
+
+services:
+  fastapi_app:
+    build: .               # или image: your/imagename:tag
+    container_name: fastapi_app
+    ports: ["80:80"]       # наружу, если нужно
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    networks: [monitoring]
